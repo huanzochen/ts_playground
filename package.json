@@ -13,9 +13,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^22.13.11",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typedoc": "^0.28.1",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "mathjs": "^14.5.3"
   }
 }
