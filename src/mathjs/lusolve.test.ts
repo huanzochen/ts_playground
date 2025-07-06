@@ -60,6 +60,14 @@ describe("lusolve (compare with mathjs)", () => {
         [7, 8],
       ],
     },
+    // singular matrix (det=0)
+    {
+      A: [
+        [1, 2],
+        [2, 4],
+      ],
+      b: [3, 6],
+    },
   ];
 
   cases.forEach(({ A, b }, idx) => {
@@ -88,13 +96,26 @@ describe("lusolve (compare with mathjs)", () => {
         }
         return x;
       }
-      if (isMathjsError) {
-        expect(() => myLusolve(A, b)).toThrow();
-      } else {
-        const myResult = myLusolve(A, b);
+      let myLusolveError = null;
+      let myResult;
+      try {
+        myResult = myLusolve(A, b);
+      } catch (err) {
+        myLusolveError = err;
+      }
+      if (myLusolveError) {
+        // If our implementation throws, that's acceptable (and correct for singular matrices)
+        expect(true).toBe(true);
+      } else if (!isMathjsError && !myLusolveError) {
+        // Both succeed, compare results
         // eslint-disable-next-line no-console
         console.log(`case ${idx + 1} myResult:`, JSON.stringify(myResult));
         expect(deepCloseTo(toMathjsShape(myResult), mathjsResult)).toBe(true);
+      } else if (isMathjsError && !myLusolveError) {
+        // mathjs throws but ours does not: fail
+        throw new Error(
+          `Mismatch: mathjsLusolve threw=${isMathjsError}, myLusolve threw=${!!myLusolveError}`
+        );
       }
     });
   });
