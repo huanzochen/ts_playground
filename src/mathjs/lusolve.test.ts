@@ -12,9 +12,10 @@ function deepCloseTo(a: any, b: any, digits = 8): boolean {
 }
 
 describe("lusolve (compare with mathjs)", () => {
-  const cases: { A: number[][]; b: number[] | number[][] }[] = [
+  const cases: { name: string; A: number[][]; b: number[] | number[][] }[] = [
     // 2x2
     {
+      name: "2x2",
       A: [
         [2, 1],
         [1, 3],
@@ -23,6 +24,7 @@ describe("lusolve (compare with mathjs)", () => {
     },
     // 3x3
     {
+      name: "3x3",
       A: [
         [3, 2, -1],
         [2, -2, 4],
@@ -32,6 +34,7 @@ describe("lusolve (compare with mathjs)", () => {
     },
     // 3x3, b is 2D
     {
+      name: "3x3 b is 2D",
       A: [
         [1, 2, 3],
         [0, 1, 4],
@@ -41,6 +44,7 @@ describe("lusolve (compare with mathjs)", () => {
     },
     // 4x4
     {
+      name: "4x4",
       A: [
         [1, 2, 3, 4],
         [2, 1, 1, 1],
@@ -51,6 +55,7 @@ describe("lusolve (compare with mathjs)", () => {
     },
     // 2x2, b is 2D
     {
+      name: "2x2 b is 2D",
       A: [
         [1, 2],
         [3, 4],
@@ -62,6 +67,7 @@ describe("lusolve (compare with mathjs)", () => {
     },
     // singular matrix (det=0)
     {
+      name: "singular matrix (det=0)",
       A: [
         [1, 2],
         [2, 4],
@@ -70,8 +76,8 @@ describe("lusolve (compare with mathjs)", () => {
     },
   ];
 
-  cases.forEach(({ A, b }, idx) => {
-    test(`case ${idx + 1}`, () => {
+  cases.forEach(({ name, A, b }, idx) => {
+    test(`case ${idx + 1} (${name})`, () => {
       let mathjsResult;
       let isMathjsError = false;
       try {
