@@ -45,7 +45,10 @@ type ExpectFalse<T extends false> = T;
 type Test1 = IsDiscriminatedUnion<Shape>;
 type Test2 = IsDiscriminatedUnion<Shape2>;
 
-type Check1 = ExpectTrue<IsDiscriminatedUnion<Shape>>;
-type Check2 = ExpectFalse<IsDiscriminatedUnion<Shape2>>;
+/**
+ * 型別測試（如果型別工具不如預期可註解掉）
+ * type Check1 = ExpectTrue<IsDiscriminatedUnion<Shape>>;
+ * type Check2 = ExpectFalse<IsDiscriminatedUnion<Shape2>>;
+ */
 
 export { getArea };

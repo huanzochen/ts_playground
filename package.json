@@ -8,6 +8,7 @@
     "start": "node --loader ts-node/esm src/index.ts",
     "gendoc": "typedoc --entryPointStrategy Expand src",
     "build": "vite build",
+    "build:types": "tsc --emitDeclarationOnly --declaration --outDir dist",
     "test": "jest"
   },
   "keywords": [],
