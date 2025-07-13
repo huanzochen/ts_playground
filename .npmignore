@@ -1,0 +1,13 @@
+# 不要包含這些目錄和檔案到 npm 發佈包
+pack/
+package/
+.vscode/
+.DS_Store
+initscript.sh
+jest.config.cjs
+prettier.json
+ts-guideline.md
+vite.config.ts
+test/
+*.test.ts
+*.tgz
