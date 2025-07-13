@@ -11,7 +11,7 @@ export default defineConfig({
     rollupOptions: {
       // external: [], // 若有外部依賴可設這裡
     },
-    minify: true,
+    minify: false,
     emptyOutDir: true,
   },
 });
