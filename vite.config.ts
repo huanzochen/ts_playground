@@ -4,8 +4,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        mathjs: "src/entry-mathjs.ts",
-        lusolve: "src/entry-lusolve.ts",
+        mathjs: "src/entries/entry-mathjs.ts",
+        lusolve: "src/entries/entry-lusolve.ts",
       },
       output: {
         entryFileNames: "[name].bundle.js",
