@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node --loader ts-node/esm src/index.ts",
-    "gendoc": "npx typedoc --entryPointStrategy Expand src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gendoc": "typedoc --entryPointStrategy Expand src",
+    "build": "vite build",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +17,11 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^22.13.11",
     "jest": "^30.0.4",
+    "mathjs": "^14.5.3",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typedoc": "^0.28.1",
     "typescript": "^5.8.2",
-    "mathjs": "^14.5.3"
+    "vite": "^7.0.4"
   }
 }
