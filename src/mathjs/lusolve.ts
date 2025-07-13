@@ -53,7 +53,8 @@ function lup(A: number[][]): { L: number[][]; U: number[][]; p: number[] } {
         k_ = i;
       }
     }
-    if (max === 0) throw new Error("Matrix is singular");
+    if (max < 1e-12)
+      throw new Error("Cannot solve linear system, matrix is singular");
 
     // Swap rows in LU and p
     if (k_ !== k) {
@@ -143,7 +144,8 @@ function usolve(
         sum += U[i][j] * (m > 1 ? (x[j] as number[]) : (x as number[]))[j];
       }
       const yval = m > 1 ? (y[i] as number[])[k] : (y as number[])[i];
-      if (U[i][i] === 0) throw new Error("Matrix is singular");
+      if (Math.abs(U[i][i]) < 1e-12)
+        throw new Error("Cannot solve linear system, matrix is singular");
       if (m > 1) {
         (x[i] as number[])[k] = (yval - sum) / U[i][i];
       } else {
